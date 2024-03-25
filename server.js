@@ -97,7 +97,7 @@ app.post('/', async (req, res) => {
     try {
       const bodyObject = JSON.parse(bodyString); // Convert string back to object
       const phoneNumber1 = bodyObject.phone || +923041950129 ; // Assuming 'phone' is the key for the phone number
-        const phoneNumber = +923041950129;
+        // const phoneNumber = +923041950129;
         const customerName = bodyObject.customer && bodyObject.customer.first_name;
         const amount = bodyObject.total_price;
         const orderItems = bodyObject.line_items.map(item => {
@@ -111,7 +111,7 @@ app.post('/', async (req, res) => {
         console.log('Order items:', orderItems);
         
         if (phoneNumber) {
-          await sendMessageUsingTemplate(phoneNumber, customerName, orderItems, amount);
+          await sendMessageUsingTemplate(phoneNumber1, customerName, orderItems, amount);
         } else {
           console.log('Phone number not found in the order.');
         }
