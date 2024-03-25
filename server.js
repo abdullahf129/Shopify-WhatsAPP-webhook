@@ -110,7 +110,7 @@ app.post('/', async (req, res) => {
         console.log('Amount:', amount);
         console.log('Order items:', orderItems);
         
-        if (phoneNumber) {
+        if (phoneNumber1) {
           await sendMessageUsingTemplate(phoneNumber1, customerName, orderItems, amount);
         } else {
           console.log('Phone number not found in the order.');
