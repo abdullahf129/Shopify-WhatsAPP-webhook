@@ -78,7 +78,7 @@ const sendMessageUsingTemplate = async (phoneNumber, customerName, orderItems, t
   }
 };
 
-app.post('/webhooks/orders/create', async (req, res) => {
+app.post('/', async (req, res) => {
   console.log('🎉 We got an order!');
 
   const hmac = req.get('X-Shopify-Hmac-Sha256');
