@@ -38,11 +38,11 @@ try {
 };
 
 
-const sendMessageUsingTemplate = async (phoneNumber, customerName, orderItems, totalAmount) => {
+const sendMessageUsingTemplate = async (phoneNumber1, customerName, orderItems, totalAmount) => {
   const url = 'https://graph.facebook.com/v18.0/280885705102326/messages';
   const data = {
     messaging_product: "whatsapp",
-    to: phoneNumber,
+    to: phoneNumber1,
     type: "template",
     template: {
       name: "order_message", // Use the template's name as defined in the WhatsApp Business API
@@ -96,8 +96,7 @@ app.post('/', async (req, res) => {
     
     try {
       const bodyObject = JSON.parse(bodyString); // Convert string back to object
-      const phoneNumber1 = bodyObject.customer && bodyObject.customer.phone || +923041950129 ; // Assuming 'phone' is the key for the phone number
-        // const phoneNumber = +923041950129;
+      const phoneNumber1 = bodyObject.customer && bodyObject.customer.phone ; // Assuming 'phone' is the key for the phone number
         const customerName = bodyObject.customer && bodyObject.customer.first_name;
         const amount = bodyObject.total_price;
         const orderItems = bodyObject.line_items.map(item => {
