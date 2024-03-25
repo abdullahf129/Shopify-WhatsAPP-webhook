@@ -126,4 +126,4 @@ app.post('/', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || port, () => console.log('App listening on port 5000!'));
+app.listen(port, '0.0.0.0', () => console.log(`App listening on port ${port}!`));
