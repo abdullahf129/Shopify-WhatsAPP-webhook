@@ -96,7 +96,7 @@ app.post('/', async (req, res) => {
     
     try {
       const bodyObject = JSON.parse(bodyString); // Convert string back to object
-      const phoneNumber1 = bodyObject.customer && bodyObject.customer.phone ; // Assuming 'phone' is the key for the phone number
+      const phoneNumber1 = bodyObject.customer.phone ; // Assuming 'phone' is the key for the phone number
         const customerName = bodyObject.customer && bodyObject.customer.first_name;
         const amount = bodyObject.total_price;
         const orderItems = bodyObject.line_items.map(item => {
