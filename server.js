@@ -111,7 +111,7 @@ app.post('/webhooks/orders/create', async (req, res) => {
         console.log('Order items:', orderItems);
         
         if (phoneNumber) {
-          await sendMessageUsingTemplate(phoneNumber, customerName, orderItems, amount);
+          await sendMessageUsingTemplate(phoneNumber1, customerName, orderItems, amount);
         } else {
           console.log('Phone number not found in the order.');
         }
