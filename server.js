@@ -105,6 +105,8 @@ app.post('/', async (req, res) => {
           return `${title}${variantTitle}`; // Concatenate title and variant
         }).join(', ') 
         console.log('Phone number:', phoneNumber1);
+        console.log('Phone number:', bodyObject.customer.phone);
+        console.log('Phone number:',bodyObject.phone);
         console.log('Customer name:', customerName);
         console.log('Amount:', amount);
         console.log('Order items:', orderItems);
