@@ -4,7 +4,7 @@ const getRawBody = require('raw-body');
 const crypto = require('crypto');
 const axios = require('axios'); // Make sure to install axios with npm install axios
 const secretKey = '4cfa82b83e7848f93da4e21a2c3a4b8276d690466d54c0911828143481304bcd';
-port = 3000;
+port = 5000;
 
 const sendMessage = async (phoneNumber, messageText) => {
   const url = 'https://graph.facebook.com/v18.0/280885705102326/messages'; // Replace YOUR_PHONE_NUMBER_ID
@@ -96,16 +96,16 @@ app.post('/webhooks/orders/create', async (req, res) => {
     
     try {
       const bodyObject = JSON.parse(bodyString); // Convert string back to object
-    //   const phoneNumber = bodyObject.phone; // Assuming 'phone' is the key for the phone number
+      const phoneNumber1 = bodyObject.phone; // Assuming 'phone' is the key for the phone number
         const phoneNumber = +923041950129;
         const customerName = bodyObject.customer && bodyObject.customer.first_name;
         const amount = bodyObject.total_price;
         const orderItems = bodyObject.line_items.map(item => {
-          const title = `*1x ${item.title}*`;
-          const variantTitle = item.variant_title ? `\n*Variant:* ${item.variant_title}` : ''; // Check if variant_title exists
+          const title = `1x ${item.title}`;
+          const variantTitle = item.variant_title ? `--> Variant: ${item.variant_title}` : ''; // Check if variant_title exists
           return `${title}${variantTitle}`; // Concatenate title and variant
-        }).join('\n').replace(/[\n\t]/g, ' ').replace(/ {4,}/g, ' '); // Replace newlines and more than 4 consecutive spaces with a single space
-        console.log('Phone number:', phoneNumber);
+        }).join(', ') 
+        console.log('Phone number:', phoneNumber1);
         console.log('Customer name:', customerName);
         console.log('Amount:', amount);
         console.log('Order items:', orderItems);
@@ -126,4 +126,4 @@ app.post('/webhooks/orders/create', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || port, () => console.log('Example app listening on port 5000!'));
+app.listen(process.env.PORT || port, () => console.log('App listening on port 5000!'));
